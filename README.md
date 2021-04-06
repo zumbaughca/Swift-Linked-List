@@ -1,2 +1,23 @@
-# Swift-Linked-List
-Linked list implementation in Swift
+# Swift Doubly Linked List Data Structure
+A doubly linked list is a set of nodes that contain pointers to the previous and next node. This data structure allows for constant time O(1) insertion/removal from the beginning or end of the list.
+```
+
+|Node 1| <---> |Node 2| <---> |Node 3| <---> |Node 4| <---> |Node 5|
+
+```
+## Methods:
+* printList()
+* append(node:)
+* insert(node:at:)
+* removeFirst()
+* removeLast()
+* remove(at:)
+* clearList()
+
+## Implementation details:
+
+## printList()
+Prints the list in order from head to tail
+  ```
+  [Node 1, Node 2, Node 3, Node 4, Node 5]
+  ```
