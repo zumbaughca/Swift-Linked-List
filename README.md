@@ -21,3 +21,12 @@ Prints the list in order from head to tail
   ```
   [Node 1, Node 2, Node 3, Node 4, Node 5]
   ```
+## append(node:)
+Appends the given node to the end of the list. If the list is empty, the head will be the node passed to append(node:). Otherwise, this node will be the tail.
+  ```
+  |Node 1| <---> |Node 2| <---> |Node 3| <---> |Node 4| <---> |Node 5|
+                                                                        &#8593;
+                                                                        |Node 6|
+  |Node 1| <---> |Node 2| <---> |Node 3| <---> |Node 4| <---> |Node 5| <---> |Node 6|                                                                
+  
+  ```
