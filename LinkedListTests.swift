@@ -68,9 +68,26 @@ class LinkedListTests: XCTestCase {
         testList.append(node: Node(value: 2))
         testList.append(node: Node(value: 3))
         testList.append(node: Node(value: 4))
+        XCTAssertThrowsError(try testList.remove(at: 4))
         XCTAssertEqual(try testList.remove(at: 2)?.value, 3)
         XCTAssertEqual(testList.tail?.previousNode?.value, 2)
         XCTAssertEqual(try testList.remove(at: 2)?.value, 4)
         XCTAssertEqual(testList.tail?.value, 2)
+        try? testList.remove(at: 1)
+        try? testList.remove(at: 0)
+        XCTAssertNil(testList?.head)
+        XCTAssertThrowsError(try testList.remove(at: 0))
+    }
+    
+    func testRemoveFirst() {
+        testList.clearList()
+        testList.append(node: Node(value: 1))
+        testList.append(node: Node(value: 2))
+        testList.append(node: Node(value: 3))
+        XCTAssertEqual(testList.removeFirst()?.value, 1)
+        XCTAssertEqual(testList.head?.value, 2)
+        testList.removeFirst()
+        testList.removeFirst()
+        XCTAssertNil(testList.head)
     }
 }
