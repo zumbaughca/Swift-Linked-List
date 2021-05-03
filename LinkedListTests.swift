@@ -90,4 +90,21 @@ class LinkedListTests: XCTestCase {
         testList.removeFirst()
         XCTAssertNil(testList.head)
     }
+    
+    func testInitFromArray() {
+        let testIntArray = [1, 2, 3, 4, 5]
+        let intList = LinkedList(from: testIntArray)
+        XCTAssertEqual(intList.head?.value, 1)
+        XCTAssertNil(intList.head?.previousNode)
+        XCTAssertEqual(intList.head?.nextNode?.value, 2)
+        XCTAssertEqual(intList.tail?.value, 5)
+        XCTAssertEqual(intList.tail?.previousNode?.value, 4)
+        let testStringArray = ["one", "two", "three", "four"]
+        let stringList = LinkedList(from: testStringArray)
+        XCTAssertEqual(stringList.head?.value, "one")
+        XCTAssertNil(stringList.head?.previousNode)
+        XCTAssertEqual(stringList.head?.nextNode?.value, "two")
+        XCTAssertEqual(stringList.tail?.value, "four")
+        XCTAssertEqual(stringList.tail?.previousNode?.value, "three")
+    }
 }

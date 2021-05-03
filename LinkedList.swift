@@ -11,6 +11,19 @@ class LinkedList<T: Comparable & Equatable> {
     var head: Node<T>?
     var tail: Node<T>?
     
+    //Create an empty list
+    init() {
+        self.head = nil
+        self.tail = nil
+    }
+    
+    //Create a list from array
+    init(from array: [T]) {
+        for val in array {
+            self.append(node: Node(value: val))
+        }
+    }
+    
     var isEmpty: Bool {
         return head == nil
     }
