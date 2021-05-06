@@ -20,8 +20,13 @@ class LinkedList<T: Comparable & Equatable> {
     //Create a list from array
     init(from array: [T]) {
         for val in array {
-            self.append(node: Node(value: val))
+            self.append(value: val)
         }
+    }
+    
+    //Create a list with a single value
+    init(value: T) {
+        self.append(value: value)
     }
     
     var isEmpty: Bool {
@@ -42,7 +47,8 @@ class LinkedList<T: Comparable & Equatable> {
     }
     
     //Adds the given node to the end of the list
-    func append(node: Node<T>) {
+    func append(value: T) {
+        let node = Node(value: value)
         guard !isEmpty else {
             head = node
             return
@@ -63,7 +69,8 @@ class LinkedList<T: Comparable & Equatable> {
     }
     
     //Insert a new node at the given index
-    func insert(node: Node<T>, at index: Int) {
+    func insert(value: T, at index: Int) {
+        let node = Node(value: value)
         if isEmpty && index == 0 {
             head = node
             return
@@ -104,7 +111,7 @@ class LinkedList<T: Comparable & Equatable> {
     }
     
     //Removes and returns the first element in the list
-    func removeFirst() -> Node<T>? {
+    func removeFirst() -> T? {
         if isEmpty {
             return nil
         }
@@ -114,12 +121,12 @@ class LinkedList<T: Comparable & Equatable> {
         head?.previousNode = nil
         
         currentHead?.nextNode = nil
-        return currentHead
+        return currentHead?.value
         
     }
     
     //Removes and returns the last element in the list
-    func removeLast() -> Node<T>? {
+    func removeLast() -> T? {
         if isEmpty {
             return nil
         }
@@ -127,7 +134,7 @@ class LinkedList<T: Comparable & Equatable> {
         if tail == nil {
             let node = head
             head = nil
-            return node
+            return node?.value
         }
         
         let currentNode = tail
@@ -140,11 +147,11 @@ class LinkedList<T: Comparable & Equatable> {
         }
         currentNode?.previousNode = nil
         
-        return currentNode
+        return currentNode?.value
     }
     
     //Removes and returns the node at the given index
-    func remove(at index: Int) throws -> Node<T>? {
+    func remove(at index: Int) throws -> T? {
         guard head != nil else {
             throw LinkedListErrors.emptyList
         }
@@ -152,7 +159,7 @@ class LinkedList<T: Comparable & Equatable> {
         if index == 0 {
             let currentHead = head
             head = head?.nextNode
-            return currentHead
+            return currentHead?.value
         } else {
             var currentNode = head
             for _ in 0 ..< index {
@@ -170,11 +177,11 @@ class LinkedList<T: Comparable & Equatable> {
                 tail = previousNode
                 previousNode?.nextNode = nil
                 print("You are removing the last element in the list. Consider using removeLast() instead.")
-                return currentNode
+                return currentNode?.value
             }
             previousNode?.nextNode = nextNode
             nextNode?.previousNode = previousNode
-            return currentNode
+            return currentNode?.value
         }
     }
     
